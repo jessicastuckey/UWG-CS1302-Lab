@@ -22,7 +22,7 @@ public class BillTextGenerator {
 		String text = "ITEMS" + System.lineSeparator();
 		double subTotal = 0.0;
 		for (BillItem item : bill.getItems()) {
-			text += item.getName() + " - " + item.getAmount() + System.lineSeparator();
+			text += item.getName() + " - " + this.decimalForamtter(item.getAmount()) + System.lineSeparator();
 			subTotal += item.getAmount();
 		}
 		
