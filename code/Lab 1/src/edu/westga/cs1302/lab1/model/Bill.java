@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public class Bill {
 	private ArrayList<BillItem> items;
 	
+	public static final double TAX_MULTIPLIER = 0.1;
+	public static final double TIP_MULTIPLIER = 0.2;
+	public static final double SUBTOTAL = 0.0;
+	
 	/** Create a new empty Bill
 	 * 
 	 * @precondition none
@@ -43,7 +47,7 @@ public class Bill {
 	 */
 	public String getText() {
 		String text = "ITEMS" + System.lineSeparator();
-		double subTotal = 0.0;
+		double subTotal = SUBTOTAL;
 		for (BillItem item : this.items) {
 			text += item.getName() + " - " + item.getAmount() + System.lineSeparator();
 			subTotal += item.getAmount();
@@ -51,8 +55,8 @@ public class Bill {
 		
 		text += System.lineSeparator();
 		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
-		double tax = subTotal * 0.1;
-		double tip = subTotal * 0.2;
+		double tax = subTotal * TAX_MULTIPLIER;
+		double tip = subTotal * TIP_MULTIPLIER;
 		text += "TAX - $" + tax + System.lineSeparator();
 		text += "TIP - $" + tip + System.lineSeparator();
 		text += "TOTAL - $" + (subTotal + tip + tax);
