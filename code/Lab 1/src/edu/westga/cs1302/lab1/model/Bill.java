@@ -14,6 +14,7 @@ public class Bill {
 	public static final double TIP_MULTIPLIER = 0.2;
 	public static final double SUBTOTAL = 0.0;
 	
+	
 	/** Create a new empty Bill
 	 * 
 	 * @precondition none
@@ -54,14 +55,18 @@ public class Bill {
 		}
 		
 		text += System.lineSeparator();
-		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
+		text += "SUBTOTAL - $" + this.decimalForamtter(subTotal) + System.lineSeparator();
 		double tax = subTotal * TAX_MULTIPLIER;
 		double tip = subTotal * TIP_MULTIPLIER;
-		text += "TAX - $" + tax + System.lineSeparator();
-		text += "TIP - $" + tip + System.lineSeparator();
-		text += "TOTAL - $" + (subTotal + tip + tax);
+		text += "TAX - $" + this.decimalForamtter(tax) + System.lineSeparator();
+		text += "TIP - $" + this.decimalForamtter(tip) + System.lineSeparator();
+		text += "TOTAL - $" + this.decimalForamtter(subTotal + tip + tax);
 		
 		return text;
+	}
+	
+	private String decimalForamtter(double amount) {
+		return String.format("%.2f", amount);
 	}
 
 }
