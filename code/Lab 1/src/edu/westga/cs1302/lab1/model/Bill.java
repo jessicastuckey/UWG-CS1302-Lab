@@ -8,13 +8,12 @@ import java.util.ArrayList;
  * @version Fall 2024
  */
 public class Bill {
-	private ArrayList<BillItem> items;
 	
 	public static final double TAX_MULTIPLIER = 0.1;
 	public static final double TIP_MULTIPLIER = 0.2;
-	public static final double SUBTOTAL = 0.0;
 	
-	
+	private ArrayList<BillItem> items;
+
 	/** Create a new empty Bill
 	 * 
 	 * @precondition none
@@ -25,6 +24,13 @@ public class Bill {
 		this.items = new ArrayList<BillItem>();
 	}
 	
+	/**Returns items in the Bill
+	 * @return the items
+	 */
+	public ArrayList<BillItem> getItems() {
+		return this.items;
+	}
+
 	/** Adds the item to the bill
 	 * 
 	 * @precondition item != null
@@ -48,7 +54,7 @@ public class Bill {
 	 */
 	public String getText() {
 		String text = "ITEMS" + System.lineSeparator();
-		double subTotal = SUBTOTAL;
+		double subTotal = 0.0;
 		for (BillItem item : this.items) {
 			text += item.getName() + " - " + item.getAmount() + System.lineSeparator();
 			subTotal += item.getAmount();
